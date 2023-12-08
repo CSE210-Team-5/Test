@@ -28,7 +28,7 @@ jobs:
             echo "$TEST_SECRET" >> configuration/test_mastodon_client_info.ini
       - uses: pdm-project/setup-pdm@v3
         with:
-          python-version: "3.11.5
+          python-version: "3.11.5"
       - name: Install dependencies
         run: |
           pdm init -gn

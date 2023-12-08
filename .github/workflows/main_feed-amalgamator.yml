@@ -16,21 +16,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python version
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.11'
-
-      - name: Create and start virtual environment
+      - name: Setup Directory
+        run: mkdir configuration
+      - name: Setup Config Files
+        env:
+          TEST_SECRET: ${{secrets.TEST_CONFIG}}
+          APP_SECRET: ${{secrets.APP_CONFIG}}
+        shell: bash
         run: |
-          python -m venv venv
-          source venv/bin/activate
-
+            echo "$APP_SECRET" >> configuration/app_settings.ini
+            echo "$TEST_SECRET" >> configuration/test_mastodon_client_info.ini
+      - uses: pdm-project/setup-pdm@v3
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pdm init -gn
+          pdm install 
+          pdm list
 
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 

@@ -39,7 +39,7 @@ jobs:
         echo "$TEST_SECRET" >> configuration/test_mastodon_client_info.ini
 
     - name: test
-      run: ls
+      run: ls -l
         
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3

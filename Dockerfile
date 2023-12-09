@@ -9,7 +9,7 @@ RUN pip install -U pip setuptools wheel
 RUN pip install pdm
 
 RUN pdm init -gn &&\
-    pdm install
+    pdm install &&\
     pdm list
 
 EXPOSE 80

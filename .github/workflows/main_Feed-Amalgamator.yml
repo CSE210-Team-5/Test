@@ -30,7 +30,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/CSE210-Team-5/Test:${{ github.sha }}
+        tags: ghcr.io/cse210-team-5/test:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:

@@ -10,6 +10,7 @@ RUN pip install pdm
 
 RUN pdm init -gn &&\
     pdm install
+    pdm list
 
 EXPOSE 80
 

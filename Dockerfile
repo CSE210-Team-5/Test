@@ -7,7 +7,7 @@ WORKDIR /code
 COPY . .
 RUN pip install -U pip setuptools wheel
 RUN pip install pdm
-
+RUN ls
 RUN pdm init -gn &&\
     pdm install &&\
     pdm list

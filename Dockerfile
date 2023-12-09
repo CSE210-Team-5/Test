@@ -11,6 +11,6 @@ RUN pip install pdm
 RUN pdm init -gn &&\
     pdm install
 
-EXPOSE 50505
+EXPOSE 80
 
-ENTRYPOINT ["pdm","run","gunicorn", "-b", "0.0.0.0:50505","feed_amalgamator.__init__:create_app()"]
+ENTRYPOINT ["pdm","run","gunicorn", "-b", "0.0.0.0:80","feed_amalgamator.__init__:create_app()"]

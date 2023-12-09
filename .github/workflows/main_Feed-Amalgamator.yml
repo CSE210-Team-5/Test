@@ -37,13 +37,11 @@ jobs:
       run: |
         echo "$APP_SECRET" >> configuration/app_settings.ini
         echo "$TEST_SECRET" >> configuration/test_mastodon_client_info.ini
-
-    - name: test
-      run: ls -l
         
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: ghcr.io/cse210-team-5/test/${{ secrets.AzureAppService_ContainerUsername_f481699719894b41bb2bd2e82fd2c9aa }}/test:${{ github.sha }}
         file: ./Dockerfile

@@ -48,4 +48,4 @@ jobs:
         app-name: 'Feed-Amalgamator'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_41f52bfb668b4599b8853e270478da47 }}
-        images: 'ghcr.io/flask-demo/${{ secrets.AzureAppService_ContainerUsername_ad50f4e93d7f4d9aa76c5e4a32aaa116 }}/appsvc/staticsite:${{ github.sha }}'
+        images: 'ghcr.io/cse210-team-5/test:${{ github.sha }}'

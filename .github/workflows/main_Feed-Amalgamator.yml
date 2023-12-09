@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: https://ghcr.io/cse210-team-5/test/
+        username: ${{ secrets.AzureAppService_ContainerUsername_f481699719894b41bb2bd2e82fd2c9aa }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_e5c5c9d9f8cd461fba55e103c89a3b1c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/cse210-team-5/test:${{ github.sha }}
+        tags: ghcr.io/cse210-team-5/test/${{ secrets.AzureAppService_ContainerUsername_f481699719894b41bb2bd2e82fd2c9aa }}/test:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'Feed-Amalgamator'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_41f52bfb668b4599b8853e270478da47 }}
-        images: 'ghcr.io/cse210-team-5/test:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_420b7c3e355240dfaac4a1048b07c345 }}
+        images: 'ghcr.io/cse210-team-5/test/${{ secrets.AzureAppService_ContainerUsername_f481699719894b41bb2bd2e82fd2c9aa }}/test:${{ github.sha }}'

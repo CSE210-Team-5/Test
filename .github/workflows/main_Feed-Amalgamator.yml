@@ -22,9 +22,9 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://ghcr.io/flask-demo/
-        username: ${{ secrets.AzureAppService_ContainerUsername_ad50f4e93d7f4d9aa76c5e4a32aaa116 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_7c7aeb6b71e143c78dce11ff147939fa }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
